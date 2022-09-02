@@ -29,3 +29,11 @@ $maxWidthContainer: 1500
 
     @else
         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}))
+
+//  Формула по переводу только в rem
+
+@function v($px, $basePix: 4, $minusPx: 0)
+    @if $minusPx == 0
+        @return ($px / $basePix) + rem
+
+        @return 'calc(' + ($px / $basePix) + 'rem - ' + $minusPx + 'px)'
