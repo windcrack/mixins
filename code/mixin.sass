@@ -30,9 +30,17 @@ $maxWidthContainer: 1500
     @else
         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}))
 
+// font-size
+$maxWidth: 1300
+
+@mixin adaptiv-font($pcSize, $mobSize)
+    $addSize: $pcSize - $mobSize
+    $maxWidth: $maxWidth - 320
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}))
+
 //  Формула по переводу только в rem
 
-@function v($px, $basePix: 4, $minusPx: 0)
+@function rem($px, $basePix: 4, $minusPx: 0)
     @if $minusPx == 0
         @return ($px / $basePix) + rem
 
